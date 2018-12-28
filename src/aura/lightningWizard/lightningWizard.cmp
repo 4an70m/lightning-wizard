@@ -1,0 +1,35 @@
+<!--
+ - Created by 4an70 on 12/26/2018.
+ -->
+
+<aura:component description="lightningWizard">
+
+    <!-- ATTRIBUTES -->
+    <aura:attribute name="currentStep" type="Integer" access="public" default="0"/>
+    <aura:attribute name="currentStepName" type="String" access="private" default="step-0"/>
+    <aura:attribute name="steps" type="List" access="private"/>
+    <aura:attribute name="stepComponents" type="Aura.Component[]" access="private"/>
+
+    <!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="render" value="{!this}" action="{!c.doRender}"/>
+    <aura:handler name="change" value="{!v.body}" action="{!c.onBodyChange}"/>
+    <aura:handler name="onChangeWizardStep" event="c:lightningWizardStepEvent" action="{!c.handleStepChange}" includeFacets="true"/>
+
+    <!-- MARKUP -->
+    <div>
+        <lightning:progressIndicator currentStep="{!v.currentStepName}"
+                                     type="path">
+            <aura:iteration items="{!v.steps}" var="step" indexVar="index">
+                <lightning:progressStep label="{!step.label}"
+                                        class="progress-step-disable-click"
+                                        value="{!'step-' + index}"
+                                        onclick="{!c.handleStepClick}"
+                                        onprivatestepfocus="{!c.handleStepClick}"/>
+            </aura:iteration>
+        </lightning:progressIndicator>
+    </div>
+    <div class="slds-p-bottom--medium">
+        {!v.body}
+    </div>
+</aura:component>

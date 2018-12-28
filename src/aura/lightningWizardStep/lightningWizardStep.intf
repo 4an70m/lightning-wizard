@@ -1,0 +1,9 @@
+<!--
+ - Created by 4an70 on 12/26/2018.
+ -->
+
+<aura:interface description="lightningWizardStep">
+
+    <aura:attribute name="label" type="String" access="public" required="true"/>
+    <aura:registerEvent name="onChangeWizardStep" type="c:lightningWizardStepEvent"/>
+</aura:interface>

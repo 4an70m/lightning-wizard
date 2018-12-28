@@ -1,0 +1,7 @@
+<!--
+ - Created by 4an70 on 12/26/2018.
+ -->
+
+<aura:event type="COMPONENT" description="lightningWizardStepEvent">
+    <aura:attribute name="stepChange" type="String" required="true"/>
+</aura:event>
